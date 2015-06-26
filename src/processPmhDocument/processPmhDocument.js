@@ -5,11 +5,14 @@
  *    RIF:CS
  *    
  * Author: Dima Kudriavcev (dmitrij@kudriavcev.info)
+ * Vession: 0.1.0
  */
 
 var xml2js = require('xml2js');
 var async = require('async');
 var AWS = require('aws-sdk');
+var OAIPMH = require('./lib').OAIPMH;
+var RifCS = require('./lib').RifCS;
 
 // for debug only
 var util = require('util');
@@ -49,7 +52,41 @@ exports.handler = function(event, context) {
             function process (result, next) {
             	console.log("Processing XML Document");
             	// Process the XML Document
-                console.log(util.inspect(result, false, null));
+                //console.log(util.inspect(result, false, null));
+            	var doc = new OAIPMH(result);
+            	if (!doc.root()) {
+            		return next("This is not OAI:PMH Document");
+            	}
+            	
+            	var recordsCount = doc.recordsCount();
+            	for (var nRecord = 0; nRecord < recordsCount; ++nRecord) {
+            		var record = doc.record(nRecord);
+            		var header = record.header();
+            		var metadata = record.metadata();
+            		
+            		if (RifCS.isRifCS(metadata)) {
+						var rif = new RifCS(metadata);
+				
+						var objectsCount = rif.recordsCount();
+						for (var nObject = 0; nObject < objectsCount; ++nObject) {
+							var registryObject = doc.record(nObject);
+							
+							if (registryObject.isCollection()) {
+								var collection = registryObject.asCollection(); 
+							} else if (registryObject.isParty()) {
+								var party = registryObject.asParty(); 
+							} else if (registryObject.isActivity()) {
+								var activity = registryObject.asActivity(); 
+							} else if (registryObject.isService()) {
+								var service = registryObject.asService(); 
+							} else {
+		            			return next("The registry record is not a collection, party, activity or service");
+		            		}
+						}
+            		} else {
+            			return next("The document metadata is not in the know format. Supported metadata formats: [ Rif:CS ]");
+            		}
+            	}            		
             }
         ], function (err) {
             if (err) {
