@@ -1,0 +1,28 @@
+{
+  "name": "processPmhDocument",
+  "version": "0.1.0",
+  "description": "AWS Lambda function to automatically prcess OAI:PMH Document from AWS S3 storage",
+  "main": "processPmhDocument.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "async": "1.2.x",
+    "aws-sdk": "2.1.x",
+    "underscore": "1.8.x",
+    "util": "0.10.x",
+    "xml2js": "0.4.x"
+  },
+  "devDependencies": {
+    "mocha": "~2.2.5",
+    "chai": "~3.0.0",
+    "sinon": "~1.15.3"
+  },
+  "engine": "node >= 1.3.10",
+  "author": "Dima Kudriavcev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rd-switchboard/Lambda.git"
+  }
+}
