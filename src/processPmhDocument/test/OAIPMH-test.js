@@ -134,7 +134,11 @@ describe('OAI:PMH', function() {
 						it("The Rif:CS object key should be equal to 'UNIMELB:AP20:c-khrd-rpt-lifedata'", function() {
 							expect(record.key()).to.be.equal('UNIMELB:AP20:c-khrd-rpt-lifedata');
 						});
-	
+
+						it("The Rif:CS object originatingSource should be equal to 'http://researchdata.ands.org.au/registry/orca/register_my_data'", function() {
+							expect(record.originatingSource()).to.be.equal('http://researchdata.ands.org.au/registry/orca/register_my_data');
+						});
+
 						it("The Rif:CS object group should be equal to 'The University of Melbourne'", function() {
 							expect(record.group()).to.be.equal('The University of Melbourne');
 						});
@@ -166,14 +170,46 @@ describe('OAI:PMH', function() {
 								expect(collection).to.exist;
 							});
 	
+							it("Should have dataset type", function() {
+								expect(collection.type()).to.be.equal('dataset');
+							});
+
+							it("Should have dateModified equal to '2013-05-06T12:54:04'", function() {
+								expect(collection.dateModified()).to.be.equal('2013-05-06T12:54:04');
+							});
+
+							it("Should have local identifier equal to [ 'UNIMELB:AP20:c-khrd-rpt-lifedata' ]", function() {
+								expect(collection.identifier('local')[0]).to.be.equal('UNIMELB:AP20:c-khrd-rpt-lifedata');
+							});
+
+							it("Should have primary name equal to [ 'Koori Health Research Database life expectancy dataset' ]", function() {
+								expect(collection.name('primary')[0]).to.be.equal('Koori Health Research Database life expectancy dataset');
+							});
+
+							it("Should have some full description", function() {
+								expect(collection.description('full')).to.exist;
+							});
 							
+							it("Should have some rights description", function() {
+								expect(collection.description('rights')).to.exist;
+							});
+							
+							it("Should have local subject equal to [ 'KHRD' ]", function() {
+								expect(collection.subject('local')[0]).to.be.equal('KHRD');
+							});
+							
+							it("Should be produced by 'UNIMELB:AP20:s-ap20-khrd' object", function() {
+								var relation = collection.relatedObject('isProducedBy')[0];
+								expect(relation.key).to.be.equal('UNIMELB:AP20:s-ap20-khrd')
+								expect(relation.relation).to.be.equal('isProducedBy');
+							});
+
 						});
 					});
 				});
 			});			
 		});
-	});
-	
+	});	
 });
 
 

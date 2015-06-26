@@ -15,10 +15,10 @@ OAIPMHHeader.prototype.datestamp = function() {
 
 OAIPMHHeader.prototype.getSpec = function(specType) {
 	if (Array.isArray(this.header.setSpec)) {
-		for (var spec in this.header.setSpec) {
-			var s = this.header.setSpec[spec];
-			if (s.indexOf(specType + ":") === 0) {
-				return s.substring(specType.length + 1);
+		for (var i = 0; i < this.header.setSpec.length; ++i) {
+			var spec = this.header.setSpec[i];
+			if (spec.indexOf(specType + ":") === 0) {
+				return spec.substring(specType.length + 1);
 			}
 		}
 	}

@@ -2,7 +2,10 @@
  * New node file
  */
 
-var RifCSCollection = require('./RifCSCollection.js').RifCSCollection;
+var RifCSCollection = require('./RifCSCollection.js').RifCSCollection,
+	RifCSParty = require('./RifCSParty.js').RifCSParty,
+	RifCSActivity = require('./RifCSActivity.js').RifCSActivity,
+	RifCSService = require('./RifCSService.js').RifCSService;
 
 function RifCSRecord(record) {
 	this.record = record;
@@ -13,11 +16,11 @@ RifCSRecord.prototype.group = function() {
 };
 
 RifCSRecord.prototype.key = function() {
-	return this.record.key[0];
+	return typeof this.record.key[0]._ !== 'undefined' ? this.record.key[0]._ : this.record.key[0];
 };
 
 RifCSRecord.prototype.originatingSource = function() {
-	return this.record.key[0];
+	return typeof this.record.originatingSource[0]._ !== 'undefined' ? this.record.originatingSource[0]._ : this.record.originatingSource[0];
 };
 
 RifCSRecord.prototype.isCollection = function() {
@@ -40,5 +43,16 @@ RifCSRecord.prototype.asCollection = function() {
 	return this.isCollection() ? new RifCSCollection(this.record.collection[0]) : null;
 };
 
+RifCSRecord.prototype.asParty = function() {
+	return this.isParty() ? new RifCSParty(this.record.party[0]) : null;
+};
+
+RifCSRecord.prototype.asService = function() {
+	return this.isService() ? new RifCSService(this.record.sevice[0]) : null;
+};
+
+RifCSRecord.prototype.asActivity = function() {
+	return this.isActivity() ? new RifCSActivity(this.record.activity[0]) : null;
+};
 
 exports.RifCSRecord = RifCSRecord;
