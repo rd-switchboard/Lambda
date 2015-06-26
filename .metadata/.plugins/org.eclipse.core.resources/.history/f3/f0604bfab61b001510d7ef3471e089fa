@@ -1,0 +1,11 @@
+function RifCS(record) {
+	this.record = record;
+}
+
+RifCS.protorype.records = function() {
+	return this.record.registryObject;
+};
+
+RifCS.protorype.record = function(i) {
+	return this.records()[i];	
+};

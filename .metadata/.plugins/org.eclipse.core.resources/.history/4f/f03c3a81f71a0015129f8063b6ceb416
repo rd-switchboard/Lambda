@@ -1,0 +1,29 @@
+var xml4js = require('xml4js');
+var util = require('util');
+var fs = require('fs');
+
+console.log("Ceating xml parser");
+
+var options = {};
+var parser = new xml4js.Parser(options);
+
+var schema = fs.readFileSync('xsd/OAI-PMH.xsd', {encoding: 'utf-8'});
+var xml = fs.readFileSync('xml/0.xml', {encoding: 'utf-8'});
+
+console.log("Parsing xml");
+
+parser.addSchema('http://www.example.com/Schema', schema, function (err, importsAndIncludes) {
+    // importsAndIncludes contains schemas to be added as well to satisfy all imports and includes found in schema.xsd 
+    parser.parseString(xml, function (err, result) {
+        console.log(util.inspect(result, false, null));
+    });
+});
+
+xml4js.parseString(xml, {downloadSchemas: true}, function (err, result) {
+   console.log("Parsing is finished");
+   if (err) 
+      console.log("Error: " + err);	
+   else
+      console.log(util.inspect(result, false, null));
+});
+

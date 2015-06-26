@@ -1,0 +1,8 @@
+
+function OAIPMH(document) {
+	this.document = document;
+}
+
+OAIPMH.prototype.getRoot = function() {
+	return this.document["OAI-PMH"]
+};

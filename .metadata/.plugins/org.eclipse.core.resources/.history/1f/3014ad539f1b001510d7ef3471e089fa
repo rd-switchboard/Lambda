@@ -1,0 +1,4 @@
+var fs = require('fs'),
+  OAIPMH = require('../lib').OAIPMH;
+
+

@@ -1,0 +1,13 @@
+var fs = require('fs'),
+    xml2js = require('xml2js');
+    OAIPMH = require('../lib').OAIPMH;
+
+var xml = fs.readFileSync('../xml/0.xml', {encoding: 'utf-8'});
+
+describe('OAIPMH', function() {
+	
+	describe('#root', function() {
+		var OAIPMH = new OAIPMH()
+	});
+	
+});

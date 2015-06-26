@@ -1,0 +1,39 @@
+var OAIPMHRecord = require('./OAIPMHRecord.js').OAIPMHRecord;
+
+function OAIPMH(document) {
+	this.document = document;
+}
+
+OAIPMH.prototype.root = function() {
+	return this.document["OAI-PMH"];
+};
+
+OAIPMH.prototype.responseDate = function() {
+	return this.root().responseDate;
+};
+
+OAIPMH.prototype.request = function() {
+	return this.root().request;
+};
+
+OAIPMH.prototype.error = function() {
+	return this.root().error;
+};
+
+OAIPMH.prototype.records = function() {
+	return this.root().ListRecords[0].record;
+};
+
+OAIPMH.prototype.record = function(i) {
+	var rec = this.records()[i];
+	if (rec === 'unindefied')
+		return null;
+	else
+		return new OAIPMHRecord(this.records()[i]);
+};
+
+OAIPMH.prototype.resumptionToken = function() {
+	return this.root().ListRecords[0].resumptionToken;	
+};
+
+exports.OAIPMH = OAIPMH;

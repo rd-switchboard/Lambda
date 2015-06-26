@@ -1,0 +1,55 @@
+var fs = require('fs'),
+    xml2js = require('xml2js'),
+    OAIPMH = require('../lib').OAIPMH;
+    
+var parser = new xml2js.Parser();
+
+describe('OAI:PMH', function() {
+	var doc;
+	
+	before(function(done) {
+		fs.readFile('xml/0.xml', function(err, data) {
+			if (err) return done(err);
+			
+			parser.parseString(data, function (err, document) {
+				if (err) return done(err);
+				
+				doc = new OAIPMH(document);
+				
+				done();
+			});
+		});
+	});
+	
+	it ("Should detect what document has been loaded", function() {
+		expect(doc).to.exist;
+	});
+	
+	it("Should detect OAI:PMH root node", function() {
+		expect(doc.root()).to.exist;
+	});
+	
+	it("Should detect OAI:PMH resumptionToken node", function() {
+		expect(doc.resumptionToken()).to.exist;
+	});
+	
+	describe('#records', function() {
+		it("Should detect OAI:PMH records", function() {
+			expect(doc.records()).to.exist;
+		});
+		
+		it("Should test is records are an array", function() {
+			assert(Array.isArray(doc.records()));
+		});
+
+		it("Should have 100 records", function() {
+			expect(doc.records().length).to.be.equal(100);
+		});
+	});
+	
+});
+
+
+
+
+

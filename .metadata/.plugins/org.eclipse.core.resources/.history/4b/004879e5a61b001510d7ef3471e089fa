@@ -1,0 +1,45 @@
+var fs = require('fs'),
+    xml2js = require('xml2js'),
+    chai = require('chai'),
+    OAIPMH = require('../lib').OAIPMH;
+
+chai.config.includeStack = true;
+    
+var expect = chai.expect;
+var AssertionError = chai.AssertionError;
+var Assertion = chai.Assertion;
+var assert = chai.assert;
+    
+var parser = new xml2js.Parser();
+
+describe('OAI:PMH', function() {
+	var doc;
+	
+	before(function(done) {
+		fs.readFile('xml/0.xml', function(err, data) {
+			if (err) return done(err);
+			
+			parser.parseString(data, function (err, document) {
+				if (err) return done(err);
+				
+				doc = new OAIPMH(document);
+				
+				done();
+			});
+		});
+	});
+	
+	it ("Should detect what document has been loaded", function() {
+		expect(doc).to.exist;
+	});
+	
+	it("Should detect OAI:PMH root node", function() {
+		expect(doc.root()).to.exist;
+	});
+	
+});
+
+
+
+
+

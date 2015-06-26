@@ -1,0 +1,9 @@
+/**
+ * New node file
+ */
+
+function RifCSRecord(record) {
+	this.record = record;
+}
+
+exports.RifCSRecord = RifCSRecord;

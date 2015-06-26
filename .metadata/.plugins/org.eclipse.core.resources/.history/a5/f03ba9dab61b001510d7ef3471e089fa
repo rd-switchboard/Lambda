@@ -1,0 +1,3 @@
+function RifCS(record) {
+	this.record = record;
+}

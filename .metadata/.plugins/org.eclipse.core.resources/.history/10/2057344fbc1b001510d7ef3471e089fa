@@ -1,0 +1,20 @@
+/**
+ * New node file
+ */
+
+
+function OAIPMHHeader(header) {
+	this.header = header;
+}
+
+OAIPMHHeader.prototype.identifier = function() {
+	return this.header.identifier;
+}
+
+OAIPMHHeader.prototype.datestamp = function() {
+	return this.header.datestamp;
+}
+
+OAIPMHHeader.prototype.datasource = function() {
+	return this.header.datestamp;
+}

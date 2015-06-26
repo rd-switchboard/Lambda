@@ -1,0 +1,22 @@
+var fs = require('fs'),
+    xml2js = require('xml2js'),
+    OAIPMH = require('../lib/OAIPMH.js');
+
+var parser = new xml2js.Parser();
+fs.readFile('../xml/0.xml', function(err, data) {
+    parser.parseString(data, function (err, document) {
+    	describe('OAIPMH', function() {
+    		
+    		describe('#root', function() {
+    			var OAIPMH = new OAIPMH(document);
+    			var root = OAIPMH.root();
+    			it("should detect OAI:PMH root node", function(){
+    				expect(root).to.not.equal(null);
+    		    });
+    		});
+    		
+    	});
+    });
+});
+
+

@@ -1,0 +1,7 @@
+/**
+ * New node file
+ */
+
+function RifCSRecord(record) {
+	this.record = record;
+}

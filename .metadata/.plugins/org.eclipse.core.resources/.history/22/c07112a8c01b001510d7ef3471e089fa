@@ -1,0 +1,10 @@
+/**
+ * New node file
+ */
+
+
+function OAIPMHMetadata(metadata) {
+	this.metadata = metadata;
+} 
+
+exports.OAIPMHMetadata = OAIPMHMetadata;

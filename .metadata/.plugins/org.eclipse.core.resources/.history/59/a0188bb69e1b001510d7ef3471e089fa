@@ -1,0 +1,12 @@
+
+function OAIPMH(document) {
+	this.document = document;
+}
+
+OAIPMH.prototype.root = function() {
+	return this.document["OAI-PMH"];
+};
+
+OAIPMH.prototype.responseDate = function() {
+	
+};

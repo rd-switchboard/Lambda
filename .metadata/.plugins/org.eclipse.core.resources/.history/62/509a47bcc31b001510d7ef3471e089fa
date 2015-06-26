@@ -1,0 +1,44 @@
+var RifCSRecord = require('./RifCSRecord.js').RifCSRecord;
+
+function RifCS(metadata) {
+	this.records = metadata.registryObjects[0];
+}
+
+RifCS.isRifCS = function(metadata) {
+	return typeof metadata.registryObjects !== 'undefined';	
+};
+
+RifCS.prototype.recordsCount = function() {
+	return this.records.registryObject.length;
+};
+
+OAIPMH.prototype.record = function(i) {
+	var rec = this.records()[i];
+	if (typeof rec === 'undefined')
+		return null;
+	else
+		return new OAIPMHRecord(this.records()[i]);
+};
+
+
+RifCS.prototype.records = function() {
+	return this.records.registryObject;
+};
+
+RifCS.prototype.record = function(i) {
+	return this.records()[i];	
+};
+
+RifCS.prototype.recordKey = function(i) {
+	return this.record(i).key;	
+};
+
+RifCS.prototype.recordGroup = function(i) {
+	return this.record.$.group;	
+};
+
+RifCS.prototype.recordKey = function(i) {
+	return this.record(i).key;	
+};
+
+exports.RifCS = RifCS;

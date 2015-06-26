@@ -1,0 +1,4 @@
+
+function OAIPMHRecord(record) {
+	this.record = record;
+}

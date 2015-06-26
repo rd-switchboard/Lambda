@@ -1,0 +1,30 @@
+function RifCS(record) {
+	this.record = record;
+}
+
+function isRifCS(metadata) {
+	return typeof metadata.registryObjects !== 'undefined';	
+};
+
+
+RifCS.prototype.records = function() {
+	return this.record.registryObject;
+};
+
+RifCS.prototype.record = function(i) {
+	return this.records()[i];	
+};
+
+RifCS.prototype.recordKey = function(i) {
+	return this.record(i).key;	
+};
+
+RifCS.prototype.recordGroup = function(i) {
+	return this.record.$.group;	
+};
+
+RifCS.prototype.recordKey = function(i) {
+	return this.record(i).key;	
+};
+
+exports.RifCS = RifCS;

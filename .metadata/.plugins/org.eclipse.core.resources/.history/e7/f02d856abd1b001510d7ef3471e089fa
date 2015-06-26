@@ -1,0 +1,16 @@
+var OAIPMHHeader = require('./OAIPMHHeader.js').OAIPMHHeader,
+    OAIPMHMetadata = require('./OAIPMHMetadata.js').OAIPMHMetadata;
+
+function OAIPMHRecord(record) {
+	this.record = record;
+}
+
+OAIPMHRecord.prototype.header = function() {
+	return new OAIPMHHeader(this.record.header[0]);
+};
+
+OAIPMHRecord.prototype.metadata = function() {
+	return new OAIPMHMetadata(this.record.header[0]);
+};
+
+exports.OAIPMHRecord = OAIPMHRecord;

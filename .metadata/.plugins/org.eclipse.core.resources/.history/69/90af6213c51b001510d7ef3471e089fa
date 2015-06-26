@@ -1,0 +1,21 @@
+/**
+ * New node file
+ */
+
+function RifCSRecord(record) {
+	this.record = record;
+}
+
+RifCSRecord.prototype.key = function() {
+	return this.record.key[0];
+}
+
+RifCSRecord.prototype.originatingSource = function() {
+	return this.record.key[0];
+}
+
+RifCSRecord.prototype.isCollection = function() {
+	return this.record.key[0];
+}
+
+exports.RifCSRecord = RifCSRecord;
