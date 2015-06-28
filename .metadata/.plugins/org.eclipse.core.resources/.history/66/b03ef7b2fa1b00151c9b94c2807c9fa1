@@ -1,0 +1,12 @@
+/**
+ * New node file
+ */
+
+var RifCSObject = require('./RifCSObject.js').RifCSObject;
+
+
+function RifCSActivity(activity) {
+	this.activity = activity;
+}
+
+exports.RifCSActivity = RifCSActivity;

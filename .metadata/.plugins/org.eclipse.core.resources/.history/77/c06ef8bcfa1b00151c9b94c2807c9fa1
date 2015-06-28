@@ -1,0 +1,9 @@
+/**
+ * New node file
+ */
+
+function RifCSParty(party) {
+	this.party = party;
+}
+
+exports.RifCSParty = RifCSParty;

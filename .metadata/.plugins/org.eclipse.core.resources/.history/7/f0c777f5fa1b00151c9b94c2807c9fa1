@@ -1,0 +1,14 @@
+/**
+ * New node file
+ */
+
+var RifCSObject = require('./RifCSObject.js').RifCSObject;
+
+function RifCSService(objectRecord) {
+	RifCSObject.apply(this, arguments);
+}
+
+RifCSService.prototype=Object.create(RifCSObject.prototype);
+RifCSService.prototype.constructor=RifCSService;
+
+exports.RifCSService = RifCSService;

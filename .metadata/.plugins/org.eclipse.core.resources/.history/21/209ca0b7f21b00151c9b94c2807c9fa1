@@ -1,0 +1,27 @@
+/**
+ * New node file
+ */
+
+
+function RifCSCollection(collection) {
+	
+}
+
+RifCSCollection.prototype.type = function() {
+	return this.collection.$.type;
+};
+
+RifCSCollection.prototype.dateModified = function() {
+	return this.collection.$.dateModified;
+};
+
+RifCSCollection.prototype.dateAccessioned = function() {
+	return this.collection.$.dateAccessioned;
+};
+
+RifCSCollection.prototype.identifier = function(type) {
+	return this.collection.$.dateAccessioned;
+};
+
+
+exports.RifCSCollection = RifCSCollection;

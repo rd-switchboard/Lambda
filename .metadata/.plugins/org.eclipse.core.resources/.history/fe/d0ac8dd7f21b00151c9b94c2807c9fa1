@@ -1,0 +1,30 @@
+/**
+ * New node file
+ */
+
+var RifCSObject = require('./RifCSObject.js').RifCSObject;
+
+function RifCSCollection(collection) {
+	RifCSObject.apply(this, arguments);
+}
+
+RifCSCollection.prototype=Object.create(RifCSObject.prototype);
+
+RifCSCollection.prototype.type = function() {
+	return this.collection.$.type;
+};
+
+RifCSCollection.prototype.dateModified = function() {
+	return this.collection.$.dateModified;
+};
+
+RifCSCollection.prototype.dateAccessioned = function() {
+	return this.collection.$.dateAccessioned;
+};
+
+RifCSCollection.prototype.identifier = function(type) {
+	return this.collection.$.dateAccessioned;
+};
+
+
+exports.RifCSCollection = RifCSCollection;
