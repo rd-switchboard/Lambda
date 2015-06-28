@@ -1,5 +1,0 @@
-var assert = require('assert'),
-  sinon = require('sinon'),
-  OAIPMH = require('../lib').OAIPMH;
-
-

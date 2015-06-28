@@ -1,5 +1,0 @@
-var fs = require('fs'),
-    OAIPMH = require('../lib').OAIPMH;
-
-
-var xml = fs.readFileSync('../xml/0.xml', {encoding: 'utf-8'});

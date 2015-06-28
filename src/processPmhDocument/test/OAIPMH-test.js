@@ -199,7 +199,7 @@ describe('OAI:PMH', function() {
 							});
 							
 							it("Should be produced by 'UNIMELB:AP20:s-ap20-khrd' object", function() {
-								var relation = collection.relatedObject('isProducedBy')[0];
+								var relation = collection.relatedObjects('isProducedBy')[0];
 								expect(relation.key).to.be.equal('UNIMELB:AP20:s-ap20-khrd')
 								expect(relation.relation).to.be.equal('isProducedBy');
 							});
