@@ -1,8 +1,0 @@
-/**
- * New node file
- */
-
-
-function OAIPMHHeader(header) {
-	this.header = header;
-}

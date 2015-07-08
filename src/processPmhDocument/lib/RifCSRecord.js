@@ -48,7 +48,7 @@ RifCSRecord.prototype.asParty = function() {
 };
 
 RifCSRecord.prototype.asService = function() {
-	return this.isService() ? new RifCSService(this.record.sevice[0]) : null;
+	return this.isService() ? new RifCSService(this.record.service[0]) : null;
 };
 
 RifCSRecord.prototype.asActivity = function() {

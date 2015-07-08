@@ -1,9 +1,0 @@
-/**
- * New node file
- */
-
-function RifCSActivity(activity) {
-	this.activity = activity;
-}
-
-exports.RifCSActivity = RifCSActivity;

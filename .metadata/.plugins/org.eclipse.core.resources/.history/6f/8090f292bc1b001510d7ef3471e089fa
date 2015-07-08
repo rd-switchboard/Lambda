@@ -1,9 +1,0 @@
-
-function OAIPMHRecord(record) {
-	this.record = record;
-}
-
-OAIPMHRecord.prototype.header = function() {
-	return this.record.header[0];
-};
-

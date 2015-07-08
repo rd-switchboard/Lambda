@@ -47,7 +47,7 @@ RifCSObject.prototype.name = function(type) {
 	if (Array.isArray(this.objectRecord.name)) {
 		for (var i = 0; i < this.objectRecord.name.length; ++i) {
 			var name = this.objectRecord.name[i];
-			if (name.$.type === type) {				
+			if (typeof name.$ !== 'undefined' && name.$.type === type) {
 				if (Array.isArray(name.namePart)) {
 					for (var j = 0; j < name.namePart.length; ++j) {
 						var namePart = name.namePart[j];
@@ -67,7 +67,7 @@ RifCSObject.prototype.description = function(type) {
 	if (Array.isArray(this.objectRecord.description)) {
 		for (var i = 0; i < this.objectRecord.description.length; ++i) {
 			var description = this.objectRecord.description[i];
-			if (description.$.type === type) {				
+			if (typeof description.$ !== 'undefined' && description.$.type === type) {				
 				result.push(typeof description._ !== 'undefined' ? description._ : description);					
 			}
 		}

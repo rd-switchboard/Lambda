@@ -1,8 +1,0 @@
-
-function OAIPMH(document) {
-	this.document = document;
-}
-
-Hello.prototype.getRoot = function() {
-	  return this.helloMessage;
-	};

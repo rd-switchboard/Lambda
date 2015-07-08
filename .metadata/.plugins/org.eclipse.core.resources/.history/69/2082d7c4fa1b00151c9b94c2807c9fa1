@@ -1,9 +1,0 @@
-/**
- * New node file
- */
-
-function RifCSService(service) {
-	this.service = service;
-}
-
-exports.RifCSService = RifCSService;

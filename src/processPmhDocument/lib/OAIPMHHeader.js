@@ -5,6 +5,12 @@ function OAIPMHHeader(header) {
 	this.header = header;
 } 
 
+OAIPMHHeader.prototype.isDeleted = function() {
+	return typeof this.header.$ !== 'undefined' 
+		&& typeof this.header.$.status !== 'undefined' 
+		&& this.header.$.status === 'deleted';
+};
+
 OAIPMHHeader.prototype.identifier = function() {
 	return this.header.identifier[0];
 };
