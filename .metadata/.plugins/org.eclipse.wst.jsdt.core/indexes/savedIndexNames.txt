@@ -1,4 +1,0 @@
-INDEX VERSION 1.3+/home/dima/Projects/RD-Switchboard/Lambda/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-3647090925.index
-3650642657.index
-2175713909.index

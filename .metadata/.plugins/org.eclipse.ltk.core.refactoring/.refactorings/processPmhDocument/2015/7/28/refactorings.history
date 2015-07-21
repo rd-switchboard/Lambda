@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;processPmhDocument/processPmhDocument.js&apos; to &apos;index.js&apos;" description="Rename resource &apos;processPmhDocument.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="processPmhDocument.js" name="index.js" stamp="1436145241237" updateReferences="true"/>
-</session>

@@ -13,4 +13,9 @@ hs_err_pid*
 
 # node modules
 node_modules/
+dist/
+
+.metadata
+.recommenders
+
 
